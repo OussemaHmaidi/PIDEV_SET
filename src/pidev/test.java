@@ -5,6 +5,8 @@
  */
 package pidev;
 
+import esprit.pidev.util.Connexion;
+
 /**
  *
  * @author ousse
@@ -16,6 +18,9 @@ public class test {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+      Connexion d2=Connexion.getInstance();
+      System.out.println(d2.hashCode());
+
     }
     
 }
