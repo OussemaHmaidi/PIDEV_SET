@@ -10,5 +10,19 @@ package pidev;
  * @author LACRIM
  */
 public class NewClass {
+  
+    public int s;
+
+    public int getS() {
+        return s;
+    }
+
+    public void setS(int s) {
+        this.s = s;
+    }
+    
+    
+         
+    
     
 }
