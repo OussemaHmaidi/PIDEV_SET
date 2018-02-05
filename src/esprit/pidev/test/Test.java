@@ -5,6 +5,8 @@
  */
 package esprit.pidev.test;
 
+import javafx.scene.control.Button;
+
 /**
  *
  * @author Abdennadher Mohamed
@@ -15,7 +17,11 @@ public class Test {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        // TODO code application logic 
+        
+        
+        Button btn = new Button();
+        btn.setText("Say 'Hello World'");
     }
     
 }
