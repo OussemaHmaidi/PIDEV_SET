@@ -12,6 +12,8 @@ package pidev;
 public class NewClass {
   
     public int s;
+    public int ddsdss;
+    
 
     public int getS() {
         return s;
