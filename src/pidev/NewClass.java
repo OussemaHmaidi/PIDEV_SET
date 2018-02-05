@@ -14,6 +14,7 @@ public class NewClass {
     public int s;
     public int ddsdss;
     public int gfhdjadkadadadshshfshdajdjadadk;
+    public String test;
     
 
     public int getS() {
