@@ -3,15 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package pidev;
+package esprit.pidev.service;
 
 /**
  *
  * @author LACRIM
  */
-public class NewClass1 {
-
-    public NewClass1() {
-    }
-    
+public class PharmacieService {
+    int id ;
 }

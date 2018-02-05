@@ -5,6 +5,7 @@
  */
 package esprit.pidev.test;
 
+import esprit.pidev.util.Connexion;
 import javafx.scene.control.Button;
 
 /**
@@ -20,8 +21,8 @@ public class Test {
         // TODO code application logic 
         
         
-        Button btn = new Button();
-        btn.setText("Say 'Hello World'");
+           Connexion d2=Connexion.getInstance();
+      System.out.println(d2.hashCode());
     }
     
 }
