@@ -7,11 +7,15 @@ package pidev;
 
 /**
  *
- * @author LACRIM
+ * @author ousse
  */
-public class NewClass1 {
+public class test {
 
-    public NewClass1() {
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        // TODO code application logic here
     }
     
 }
