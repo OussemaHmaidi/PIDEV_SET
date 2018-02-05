@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package pidev;
+package esprit.pidev.test;
 
 import javafx.application.Application;
 import javafx.event.ActionEvent;
