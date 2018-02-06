@@ -16,7 +16,7 @@ import java.util.List;
 public interface IObjectPersistantService <T extends ObjectPersistant>{
      public T add(T o) ;
      public List<T> getAll() ;
-     public T getOne(Long id);
+     public T getone(Long id);
      public void delete(Long id) ;
-     public boolean Update(Long id);
+     public boolean update(Long id);    
 }
