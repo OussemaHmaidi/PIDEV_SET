@@ -23,7 +23,7 @@ DROP TABLE IF EXISTS `admin`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `admin` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `login` varchar(45) DEFAULT NULL,
   `mp` varchar(45) DEFAULT NULL,
   `nom` varchar(45) DEFAULT NULL,
@@ -49,15 +49,15 @@ DROP TABLE IF EXISTS `adresse`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `adresse` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `rue` varchar(45) DEFAULT NULL,
   `num` int(11) DEFAULT NULL,
   `ville` int(11) DEFAULT NULL,
   `x` text,
   `y` text,
   PRIMARY KEY (`id`),
-  KEY `fk2_idx` (`ville`),
-  CONSTRAINT `fk2` FOREIGN KEY (`ville`) REFERENCES `ville` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  KEY `ville_fk_idx` (`ville`),
+  CONSTRAINT `ville_fk` FOREIGN KEY (`ville`) REFERENCES `ville` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -78,17 +78,18 @@ DROP TABLE IF EXISTS `annonce`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `annonce` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `nom` varchar(45) DEFAULT NULL,
   `description` text,
   `prix` float DEFAULT NULL,
   `produit` int(11) DEFAULT NULL,
   `bon_plan` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `fk6_idx` (`produit`),
-  KEY `fk14_idx` (`bon_plan`),
-  CONSTRAINT `fk14` FOREIGN KEY (`bon_plan`) REFERENCES `bon_plan` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk6` FOREIGN KEY (`produit`) REFERENCES `produit` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  KEY `bonPlan_fk_idx` (`produit`,`bon_plan`),
+  KEY `produit_fk_idx` (`produit`),
+  KEY `bonplan_fk` (`bon_plan`),
+  CONSTRAINT `bonplan_fk` FOREIGN KEY (`bon_plan`) REFERENCES `bon_plan` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `produit_fk` FOREIGN KEY (`produit`) REFERENCES `produit` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -109,14 +110,14 @@ DROP TABLE IF EXISTS `article`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `article` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `titre` varchar(45) DEFAULT NULL,
   `categorie` varchar(45) DEFAULT NULL,
   `contenu` text,
   `admin` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `fk18_idx` (`admin`),
-  CONSTRAINT `fk18` FOREIGN KEY (`admin`) REFERENCES `admin` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  KEY `admin_fk_idx` (`admin`),
+  CONSTRAINT `admin_fk` FOREIGN KEY (`admin`) REFERENCES `admin` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -137,7 +138,7 @@ DROP TABLE IF EXISTS `avis`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `avis` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `text` text,
   `rating` float DEFAULT NULL,
   PRIMARY KEY (`id`)
@@ -161,7 +162,7 @@ DROP TABLE IF EXISTS `babysitter`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `babysitter` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `nom` varchar(45) DEFAULT NULL,
   `prenom` varchar(45) DEFAULT NULL,
   `date_naissance` date DEFAULT NULL,
@@ -191,7 +192,7 @@ DROP TABLE IF EXISTS `bon_plan`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `bon_plan` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `titre` varchar(45) DEFAULT NULL,
   `description` text,
   `categorie` varchar(45) DEFAULT NULL,
@@ -218,7 +219,7 @@ DROP TABLE IF EXISTS `cours`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `cours` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `titre` varchar(45) DEFAULT NULL,
   `classe` varchar(45) DEFAULT NULL,
   `categorie` varchar(45) DEFAULT NULL,
@@ -244,7 +245,7 @@ DROP TABLE IF EXISTS `dessin_anime`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `dessin_anime` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `nom` varchar(45) DEFAULT NULL,
   `chaine` varchar(45) DEFAULT NULL,
   `url` text,
@@ -270,7 +271,7 @@ DROP TABLE IF EXISTS `enfant`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `enfant` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `nom` varchar(45) DEFAULT NULL,
   `prenom` varchar(45) DEFAULT NULL,
   `date_naissance` date DEFAULT NULL,
@@ -278,8 +279,8 @@ CREATE TABLE `enfant` (
   `classe` varchar(45) DEFAULT NULL,
   `parent` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `fk8_idx` (`parent`),
-  CONSTRAINT `fk8` FOREIGN KEY (`parent`) REFERENCES `parent` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  KEY `parent_fk_idx` (`parent`),
+  CONSTRAINT `parent_fk` FOREIGN KEY (`parent`) REFERENCES `parent` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -300,15 +301,13 @@ DROP TABLE IF EXISTS `enfant_vaccin`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `enfant_vaccin` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `enfant` int(11) DEFAULT NULL,
   `vaccin` int(11) DEFAULT NULL,
   `statut` int(11) DEFAULT '0',
   PRIMARY KEY (`id`),
-  KEY `fk9_idx` (`enfant`),
-  KEY `fk10_idx` (`vaccin`),
-  CONSTRAINT `fk10` FOREIGN KEY (`vaccin`) REFERENCES `vaccin` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk9` FOREIGN KEY (`enfant`) REFERENCES `enfant` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  KEY `vaccin_fk_idx` (`vaccin`),
+  CONSTRAINT `vaccin_fk` FOREIGN KEY (`vaccin`) REFERENCES `vaccin` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -329,7 +328,7 @@ DROP TABLE IF EXISTS `evenement`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `evenement` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `nom` varchar(45) DEFAULT NULL,
   `date` date DEFAULT NULL,
   `description` text,
@@ -337,10 +336,11 @@ CREATE TABLE `evenement` (
   `adresse` int(11) DEFAULT NULL,
   `bon_plan` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `fk12_idx` (`adresse`),
-  KEY `fk15_idx` (`bon_plan`),
-  CONSTRAINT `fk12` FOREIGN KEY (`adresse`) REFERENCES `adresse` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk15` FOREIGN KEY (`bon_plan`) REFERENCES `bon_plan` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  KEY `adresse_fk_idx` (`adresse`),
+  KEY `bonplan_fk_idx` (`bon_plan`),
+  KEY `bonplan_fk` (`bon_plan`),
+  CONSTRAINT `adresse_fk` FOREIGN KEY (`adresse`) REFERENCES `adresse` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_bonplan` FOREIGN KEY (`bon_plan`) REFERENCES `bon_plan` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -361,13 +361,13 @@ DROP TABLE IF EXISTS `garderie`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `garderie` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `nom` varchar(45) DEFAULT NULL,
   `description` text,
   `adresse` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `fk3_idx` (`adresse`),
-  CONSTRAINT `fk3` FOREIGN KEY (`adresse`) REFERENCES `adresse` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  KEY `fk_adresse_idx` (`adresse`),
+  CONSTRAINT `fk_adresse` FOREIGN KEY (`adresse`) REFERENCES `adresse` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -388,7 +388,7 @@ DROP TABLE IF EXISTS `jeu`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `jeu` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `nom` varchar(45) DEFAULT NULL,
   `url` text,
   `type` varchar(45) DEFAULT NULL,
@@ -414,13 +414,13 @@ DROP TABLE IF EXISTS `parc`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `parc` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `nom` varchar(45) DEFAULT NULL,
   `decription` text,
   `adresse` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `fk13_idx` (`adresse`),
-  CONSTRAINT `fk13` FOREIGN KEY (`adresse`) REFERENCES `adresse` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  KEY `parc_adresse_fk_idx` (`adresse`),
+  CONSTRAINT `parc_adresse_fk` FOREIGN KEY (`adresse`) REFERENCES `adresse` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -441,7 +441,7 @@ DROP TABLE IF EXISTS `parent`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `parent` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `nom` varchar(45) DEFAULT NULL,
   `prenom` varchar(45) DEFAULT NULL,
   `login` varchar(45) DEFAULT NULL,
@@ -471,13 +471,13 @@ DROP TABLE IF EXISTS `pharmacie`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `pharmacie` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `nom` varchar(45) DEFAULT NULL,
   `type` varchar(45) DEFAULT NULL,
   `adresse` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `fk11_idx` (`adresse`),
-  CONSTRAINT `fk11` FOREIGN KEY (`adresse`) REFERENCES `adresse` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  KEY `pharmacie_adresse_fk_idx` (`adresse`),
+  CONSTRAINT `pharmacie_adresse_fk` FOREIGN KEY (`adresse`) REFERENCES `adresse` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -498,15 +498,15 @@ DROP TABLE IF EXISTS `plannification`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `plannification` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `date` date DEFAULT NULL,
   `babysitter` int(11) DEFAULT NULL,
   `parent` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `fk4_idx` (`babysitter`),
-  KEY `fk5_idx` (`parent`),
-  CONSTRAINT `fk4` FOREIGN KEY (`babysitter`) REFERENCES `babysitter` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk5` FOREIGN KEY (`parent`) REFERENCES `parent` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  KEY `babysitter_plannification_fk_idx` (`babysitter`),
+  KEY `parent_plannification_fk_idx` (`parent`),
+  CONSTRAINT `babysitter_plannification_fk` FOREIGN KEY (`babysitter`) REFERENCES `babysitter` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `parent_plannification_fk` FOREIGN KEY (`parent`) REFERENCES `parent` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -527,7 +527,7 @@ DROP TABLE IF EXISTS `produit`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `produit` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `nom` varchar(45) DEFAULT NULL,
   `description` text,
   `categorie` varchar(45) DEFAULT NULL,
@@ -552,14 +552,14 @@ DROP TABLE IF EXISTS `publication`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `publication` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `titre` varchar(45) DEFAULT NULL,
   `date` date DEFAULT NULL,
   `contenu` text,
   `parent` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `fk17_idx` (`parent`),
-  CONSTRAINT `fk17` FOREIGN KEY (`parent`) REFERENCES `parent` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  KEY `parent_publication_fk_idx` (`parent`),
+  CONSTRAINT `parent_publication_fk` FOREIGN KEY (`parent`) REFERENCES `parent` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -580,7 +580,7 @@ DROP TABLE IF EXISTS `vaccin`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `vaccin` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `nom` varchar(45) DEFAULT NULL,
   `description` text,
   `date` date DEFAULT NULL,
@@ -605,11 +605,11 @@ DROP TABLE IF EXISTS `ville`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `ville` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `nom` varchar(45) DEFAULT NULL,
   `code_postal` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -630,4 +630,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-02-06 16:37:23
+-- Dump completed on 2018-02-07 11:04:20
