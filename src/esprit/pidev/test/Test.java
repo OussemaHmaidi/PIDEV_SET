@@ -6,7 +6,7 @@
 package esprit.pidev.test;
 
 import esprit.pidev.models.Ville;
-import esprit.pidev.service.VilleService;
+import esprit.pidev.service.imp.VilleService;
 import esprit.pidev.util.Connexion;
 
 /**

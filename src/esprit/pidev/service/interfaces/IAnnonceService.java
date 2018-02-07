@@ -3,14 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package esprit.pidev.service;
+package esprit.pidev.service.interfaces;
 
-import esprit.pidev.models.EnfantVaccin;
+import esprit.pidev.models.Annonce;
 
 /**
  *
  * @author ousse
  */
-public interface IEnfantVaccinService extends IObjetPersistantService<EnfantVaccin> {
+public interface IAnnonceService extends IObjetPersistantService<Annonce> {
     
 }

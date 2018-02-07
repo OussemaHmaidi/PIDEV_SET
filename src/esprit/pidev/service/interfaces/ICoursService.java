@@ -3,14 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package esprit.pidev.service;
+package esprit.pidev.service.interfaces;
 
-import esprit.pidev.models.BonPlan;
+import esprit.pidev.models.Cours;
 
 /**
  *
  * @author ousse
  */
-public interface IBonPlanService extends IObjetPersistantService<BonPlan> {
+public interface ICoursService extends IObjetPersistantService<Cours> {
     
 }

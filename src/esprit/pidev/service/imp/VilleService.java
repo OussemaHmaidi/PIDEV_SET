@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package esprit.pidev.service;
+package esprit.pidev.service.imp;
 
+import esprit.pidev.service.interfaces.IVilleService;
 import esprit.pidev.models.Ville;
 import esprit.pidev.util.Connexion;
 import java.sql.PreparedStatement;

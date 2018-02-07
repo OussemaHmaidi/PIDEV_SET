@@ -3,14 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package esprit.pidev.service;
+package esprit.pidev.service.interfaces;
 
-import esprit.pidev.models.DessinAnime;
+import esprit.pidev.models.Plannification;
 
 /**
  *
  * @author ousse
  */
-public interface IDessinAnimeService extends IObjetPersistantService<DessinAnime> {
+public interface IPlannificationService extends IObjetPersistantService<Plannification> {
     
 }
