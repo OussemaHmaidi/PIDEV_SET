@@ -5,12 +5,10 @@
  */
 package esprit.pidev.models;
 
-import java.io.Serializable;
 import java.util.Collection;
 import java.util.Date;
-public class Enfant implements Serializable {
+public class Enfant extends ObjetPersistant{
 
-    private Integer id;
     private String nom;
     private String prenom;
     private Date dateNaissance;
@@ -22,17 +20,6 @@ public class Enfant implements Serializable {
     public Enfant() {
     }
 
-    public Enfant(Integer id) {
-        this.id = id;
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
 
     public String getNom() {
         return nom;
@@ -91,28 +78,8 @@ public class Enfant implements Serializable {
     }
 
     @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Enfant)) {
-            return false;
-        }
-        Enfant other = (Enfant) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
     public String toString() {
-        return "esprit.pidev.models.Enfant[ id=" + id + " ]";
+        return "Enfant{" + "nom=" + nom + ", prenom=" + prenom + ", dateNaissance=" + dateNaissance + ", sexe=" + sexe + ", classe=" + classe + ", parent=" + parent + ", enfantVaccinCollection=" + enfantVaccinCollection + '}';
     }
     
 }

@@ -5,12 +5,10 @@
  */
 package esprit.pidev.models;
 
-import java.io.Serializable;
 import java.util.Collection;
 import java.util.Date;
-public class Vaccin implements Serializable {
+public class Vaccin extends ObjetPersistant{
 
-    private Integer id;
     private String nom;
     private String description;
     private Date date;
@@ -19,17 +17,6 @@ public class Vaccin implements Serializable {
     public Vaccin() {
     }
 
-    public Vaccin(Integer id) {
-        this.id = id;
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
 
     public String getNom() {
         return nom;
@@ -64,28 +51,8 @@ public class Vaccin implements Serializable {
     }
 
     @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Vaccin)) {
-            return false;
-        }
-        Vaccin other = (Vaccin) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
     public String toString() {
-        return "esprit.pidev.models.Vaccin[ id=" + id + " ]";
+        return "Vaccin{" + "nom=" + nom + ", description=" + description + ", date=" + date + ", enfantVaccinCollection=" + enfantVaccinCollection + '}';
     }
     
 }

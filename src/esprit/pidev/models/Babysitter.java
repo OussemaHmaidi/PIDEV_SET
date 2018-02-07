@@ -5,12 +5,10 @@
  */
 package esprit.pidev.models;
 
-import java.io.Serializable;
 import java.util.Collection;
 import java.util.Date;
-public class Babysitter implements Serializable {
+public class Babysitter extends ObjetPersistant{
 
-    private Integer id;
     private String nom;
     private String prenom;
     private Date dateNaissance;
@@ -24,17 +22,6 @@ public class Babysitter implements Serializable {
     public Babysitter() {
     }
 
-    public Babysitter(Integer id) {
-        this.id = id;
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
 
     public String getNom() {
         return nom;
@@ -109,28 +96,8 @@ public class Babysitter implements Serializable {
     }
 
     @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Babysitter)) {
-            return false;
-        }
-        Babysitter other = (Babysitter) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
     public String toString() {
-        return "esprit.pidev.models.Babysitter[ id=" + id + " ]";
+        return "Babysitter{" + "nom=" + nom + ", prenom=" + prenom + ", dateNaissance=" + dateNaissance + ", login=" + login + ", mp=" + mp + ", cin=" + cin + ", tel=" + tel + ", salaire=" + salaire + ", plannificationCollection=" + plannificationCollection + '}';
     }
     
 }

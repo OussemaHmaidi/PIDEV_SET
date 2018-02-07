@@ -5,11 +5,9 @@
  */
 package esprit.pidev.models;
 
-import java.io.Serializable;
 import java.util.Collection;
-public class Adresse implements Serializable {
+public class Adresse extends ObjetPersistant {
 
-    private Integer id;
     private String rue;
     private Integer num;
     private String x;
@@ -21,19 +19,9 @@ public class Adresse implements Serializable {
     private Collection<Pharmacie> pharmacieCollection;
 
     public Adresse() {
+        super();
     }
 
-    public Adresse(Integer id) {
-        this.id = id;
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
 
     public String getRue() {
         return rue;
@@ -108,28 +96,8 @@ public class Adresse implements Serializable {
     }
 
     @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Adresse)) {
-            return false;
-        }
-        Adresse other = (Adresse) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
     public String toString() {
-        return "esprit.pidev.models.Adresse[ id=" + id + " ]";
+        return super.toString()+"Adresse{" + "rue=" + rue + ", num=" + num + ", x=" + x + ", y=" + y + ", parcCollection=" + parcCollection + ", ville=" + ville + ", garderieCollection=" + garderieCollection + ", evenementCollection=" + evenementCollection + ", pharmacieCollection=" + pharmacieCollection + '}';
     }
     
 }
