@@ -5,12 +5,13 @@
  */
 package esprit.pidev.service.interfaces;
 
+import esprit.pidev.models.Annonce;
 import esprit.pidev.models.Avis;
 
 /**
  *
- * @author ousse
+ * @author Abdennadher Mohamed
  */
-public interface IAvisService extends IObjetPersistantService<Avis> {
+public interface IAvis extends IObjetPersistantService<Avis>{
     
 }

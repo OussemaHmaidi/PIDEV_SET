@@ -5,10 +5,10 @@
  */
 package esprit.pidev.service.imp;
 
-import esprit.pidev.models.Adresse;
-import esprit.pidev.models.Parc;
-import esprit.pidev.models.Ville;
+import esprit.pidev.models.Avis;
+import esprit.pidev.models.DessinAnime;
 import esprit.pidev.util.Connexion;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -18,19 +18,20 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+
+
 /**
  *
  * @author Abdennadher Mohamed
  */
-public class ParcService implements esprit.pidev.service.interfaces.IParcService{
-
-    Statement st;
+public class AvisService implements esprit.pidev.service.interfaces.IAvis {
+Statement st;
     PreparedStatement pst;
     ResultSet res;
-    
     @Override
-    public Parc save(Parc t) {
-        String req="insert into parc (nom,decription,adresse) values ('"+t.getNom()+"', '"+t.getDecription()+"','"+t.getAdresse().getId()+"')";
+    public Avis save(Avis t) {
+
+         String req="insert into avis (txt,rating) values ('"+t.getText()+"', '"+t.getRating()+"')";
         try {
             st=Connexion.getInstance().getConnection().createStatement();
             st.executeUpdate(req);
@@ -38,43 +39,40 @@ public class ParcService implements esprit.pidev.service.interfaces.IParcService
             Logger.getLogger(VilleService.class.getName()).log(Level.SEVERE, null, ex);
         }
         return t;
-        
-
 
     }
 
     @Override
-    public List<Parc> getAll() {
-       String req="select * from parc";
-        List<Parc> l=new ArrayList<>();
-        AdresseService ad=new AdresseService();
+    public List<Avis> getAll() {
+         String req="select * from avis";
+        List<Avis> l=new ArrayList<>();
+        
         
         try {
             st=Connexion.getInstance().getConnection().createStatement();
         
         res=st.executeQuery(req);
         while(res.next()){
-            Parc p=new Parc();
+            Avis p=new Avis();
             p.setId(res.getInt("id"));
-            p.setNom(res.getString("nom"));
-            p.setDecription(res.getString("decription"));
-            p.setAdresse(ad.getOne(res.getInt("adresse")));
-            
-            
+            p.setText(res.getString("text"));
+            p.setRating(res.getFloat("rating"));
+           
+                       
             l.add(p);
         }
         } catch (SQLException ex) {
             Logger.getLogger(VilleService.class.getName()).log(Level.SEVERE, null, ex);
         }
         return l;
+
     }
 
     @Override
-    public Parc getOne(int id) {
+    public Avis getOne(int id) {
+        String req="select * from avis where id="+id;  
+         Avis p=new Avis();
         
-        String req="select * from parc where id="+id;  
-         Parc p=new Parc();
-        AdresseService ad=new AdresseService();
         
              Statement st;
         try {
@@ -82,25 +80,28 @@ public class ParcService implements esprit.pidev.service.interfaces.IParcService
              ResultSet res=st.executeQuery(req);
              while(res.next()){
              
-              p.setId(res.getInt("id"));
-              p.setNom(res.getString("nom"));
-              p.setDecription(res.getString("decription"));
-              p.setAdresse(ad.getOne(res.getInt("adresse")));
+            p.setId(res.getInt("id"));
+            p.setText(res.getString("nom"));
+            p.setRating(res.getFloat("chaine"));
+            
              }            
         } catch (SQLException ex) {
             Logger.getLogger(ParcService.class.getName()).log(Level.SEVERE, null, ex);
         }
        return p;
-      }
+
+
+    }
 
     @Override
-    public Parc set(Parc t) {
-      String sql = "UPDATE parc SET nom=?, decription=?, adresse=? where id="+t.getId();
+    public Avis set(Avis t) {
+         String sql = "UPDATE avis SET text=?, rating=? where id="+t.getId();
         try {
             PreparedStatement statement = Connexion.getInstance().getConnection().prepareStatement(sql);
-            statement.setString(1, t.getNom());    
-            statement.setString(2, t.getDecription());
-            statement.setInt(3, t.getAdresse().getId());
+            statement.setString(1, t.getText());    
+            statement.setFloat(2, t.getRating());
+           
+            
             int rowsUpdated = statement.executeUpdate();
             if (rowsUpdated > 0) {
             System.out.println("An existing user was updated successfully!");
@@ -110,11 +111,13 @@ public class ParcService implements esprit.pidev.service.interfaces.IParcService
             Logger.getLogger(ParcService.class.getName()).log(Level.SEVERE, null, ex);
         }
         return t;
+
+
     }
 
     @Override
     public void delete(int id) {
-        String sql = "DELETE FROM parc WHERE id=?";
+           String sql = "DELETE FROM avis WHERE id=?";
           
         try {
             PreparedStatement statement = Connexion.getInstance().getConnection().prepareStatement(sql);
@@ -126,7 +129,7 @@ public class ParcService implements esprit.pidev.service.interfaces.IParcService
         } catch (SQLException ex) {
             Logger.getLogger(ParcService.class.getName()).log(Level.SEVERE, null, ex);
         }
-       
+        
 
 
     }
