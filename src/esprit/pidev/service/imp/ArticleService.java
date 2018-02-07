@@ -5,9 +5,8 @@
  */
 package esprit.pidev.service.imp;
 
-import esprit.pidev.models.Garderie;
-import esprit.pidev.models.Ville;
-import esprit.pidev.service.interfaces.IGarderieService;
+import esprit.pidev.models.Article;
+import esprit.pidev.service.interfaces.IArticleService;
 import esprit.pidev.util.Connexion;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -22,85 +21,90 @@ import java.util.logging.Logger;
  *
  * @author PC-ASUS
  */
-public class GarderieService implements IGarderieService{
+public class ArticleService implements IArticleService{
+
  Statement st;
     PreparedStatement pst;
     ResultSet res;
     @Override
-    public Garderie save(Garderie t) {
-String req="insert into garderie (nom,description,adresse) values ('"+t.getNom()+"', '"+t.getDescription()+"', '"+t.getAdresse().getId()+"')";
+   public Article save(Article t){
+String req="insert into article (titre,categorie,contenu,admin) values ('"+t.getTitre()+"', '"+t.getCategorie()+"', '"+t.getContenu()+"', '"+t.getAdmin().getId()+"')";
         try {
             st=Connexion.getInstance().getConnection().createStatement();
             st.executeUpdate(req);
         } catch (SQLException ex) {
             Logger.getLogger(GarderieService.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return t;    }
+        return t;       }
 
     @Override
-    public List<Garderie> getAll() {
- String req="select * from Garderie";
-        List<Garderie> l=new ArrayList<>();
-       AdresseService ad= new AdresseService();
+    public List<Article> getAll() {
+String req="select * from article";
+        List<Article> l=new ArrayList<>();
+      // AdminService ad= new AdminService();
         try {
             st=Connexion.getInstance().getConnection().createStatement();
         
         res=st.executeQuery(req);
         while(res.next()){
-            Garderie g=new Garderie();
+            Article g=new Article();
             g.setId(res.getInt("id"));
-            g.setNom(res.getString("nom"));
-            g.setDescription(res.getString("description"));
-           g.setAdresse(ad.getOne(res.getInt("adresse")));
+            g.setTitre(res.getString("titre"));
+            g.setCategorie(res.getString("categorie"));
+             g.setContenu(res.getString("contenu"));
+        //   g.setAdmin(ad.getOne(res.getInt("admin")));
           
             l.add(g);
         }
         } catch (SQLException ex) {
-            Logger.getLogger(GarderieService.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ArticleService.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return l;    }
+        return l;     }
 
     @Override
-    public Garderie getOne(int id) {
-         String req="select * from garderie where id="+id;  
-        Garderie p=new Garderie();
+    public Article getOne(int id) {
+   String req="select * from article where id="+id;  
+        Article p=new Article();
         try {
             st=Connexion.getInstance().getConnection().createStatement();
             res=st.executeQuery(req);
             while(res.next()){
             p.setId(res.getInt("id"));
-            p.setNom(res.getString("nom"));
-            p.setDescription(res.getString("description"));
+            p.setTitre(res.getString("titre"));
+            p.setCategorie(res.getString("categorie"));
+               p.setContenu(res.getString("contenu"));
+          // p.setAdmin(ad.getOne(res.getInt("admin")));
+          
+              
         }
         } catch (SQLException ex) {
-            Logger.getLogger(VilleService.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ArticleService.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return p;
-    }
+        return p;    }
 
     @Override
-    public Garderie set(Garderie t) {
-String req="update garderie set nom='"+t.getNom()+"', description='"+t.getDescription()+"', adresse='"+t.getAdresse().getId()+"' where id="+t.getId();  
-        Garderie p=new Garderie();
+    public Article set(Article t) {
+String req="update article set titre='"+t.getTitre()+"', categorie='"+t.getCategorie()+"', contenu='"+t.getContenu()+"', admin='"+t.getAdmin().getId()+"' where id="+t.getId();  
+        Article p=new Article();
         try {
             st=Connexion.getInstance().getConnection().createStatement();
             st.executeUpdate(req);
         } catch (SQLException ex) {
-            Logger.getLogger(GarderieService.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ArticleService.class.getName()).log(Level.SEVERE, null, ex);
         }
         return t;    }
+    
 
-    @Override
+     @Override
     public void delete(int id) {
-         String sql = "DELETE FROM garderie WHERE id=?";
+          String sql = "DELETE FROM article WHERE id=?";
         try {
         pst = Connexion.getInstance().getConnection().prepareStatement(sql);
         pst.setInt(1,id);
         pst.executeUpdate();
         } catch (SQLException ex) {
-            Logger.getLogger(VilleService.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ArticleService.class.getName()).log(Level.SEVERE, null, ex);
     }
     
-
-    }
+}
 }
