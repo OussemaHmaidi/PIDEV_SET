@@ -102,7 +102,6 @@ public class ParentService implements IParentService{
     @Override
     public Parent set(Parent t) {
         String req="update parent set nom=?, prenom=?, date_naissance=?, login=?, mp=?, cin=?, tel=?, email=? where id=?";  
-        Parent p=new Parent();
         try {
             pst=Connexion.getInstance().getConnection().prepareStatement(req);
             pst.setString(1, t.getNom());
