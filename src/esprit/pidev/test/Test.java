@@ -6,7 +6,6 @@
 package esprit.pidev.test;
 
 import esprit.pidev.util.Connexion;
-import javafx.scene.control.Button;
 
 /**
  *
