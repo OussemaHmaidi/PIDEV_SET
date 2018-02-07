@@ -98,12 +98,7 @@ public class VilleService implements IVilleService{
         pst.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(VilleService.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-        
- 
- 
-        
+        }        
     }
     
 }
