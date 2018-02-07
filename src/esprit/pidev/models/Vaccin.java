@@ -17,13 +17,22 @@ public class Vaccin extends ObjetPersistant{
     public Vaccin() {
     }
 
-    public Vaccin(int id, String nom, String desc, java.sql.Date date) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Vaccin(String nom, String description, Date date) {
+        this.nom = nom;
+        this.description = description;
+        this.date = date;
     }
+public Vaccin(int id ,String nom, String description, Date date) {
+    super.setId(id);
+    this.nom = nom;
+        this.description = description;
+        this.date = date;
+    }
+   
 
-    public Vaccin(int id, String nom, String desc, Date date) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    
+
+  
 
 
     public String getNom() {

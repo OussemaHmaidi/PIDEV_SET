@@ -22,6 +22,22 @@ public class Adresse extends ObjetPersistant {
         super();
     }
 
+    public Adresse(String rue, Integer num, String x, String y, Ville ville) {
+        this.rue = rue;
+        this.num = num;
+        this.x = x;
+        this.y = y;
+        this.ville = ville;
+    }
+ public Adresse(int id ,String rue, Integer num, String x, String y, Ville ville) {
+     super.setId(id);
+     this.rue = rue;
+        this.num = num;
+        this.x = x;
+        this.y = y;
+        this.ville = ville;
+    }
+
 
     public String getRue() {
         return rue;

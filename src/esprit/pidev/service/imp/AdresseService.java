@@ -6,11 +6,14 @@
 package esprit.pidev.service.imp;
 
 import esprit.pidev.models.Adresse;
+import esprit.pidev.models.Ville;
 import static esprit.pidev.service.imp.PharmacieService.conn;
 import esprit.pidev.service.interfaces.IAdresseService;
 import esprit.pidev.util.Connexion;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -52,7 +55,23 @@ if (rowsInserted > 0) {
 
     @Override
     public Adresse getOne(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+     Adresse adr =null ;
+        VilleService vs = new VilleService();
+       Ville v = vs.getOne(id);
+    String req="select * from adresse where id="+id;  
+        
+        try {
+            Statement st=Connexion.getInstance().getConnection().createStatement();
+             ResultSet res=st.executeQuery(req);
+            while(res.next()){
+      adr = new Adresse(res.getInt("id"),res.getString("rue"),
+             res.getInt("num"),res.getString("x"),res.getString("y"),v);      
+        }
+        } catch (SQLException ex) {
+            Logger.getLogger(VilleService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+     
+     return adr ;
     }
 
     @Override
