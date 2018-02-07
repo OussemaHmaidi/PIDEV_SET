@@ -99,17 +99,78 @@ int count = 0;
 
     @Override
     public Vaccin getOne(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    Vaccin v =null ;
+      
+       
+    String req="select * from vaccin where id="+id;  
+        
+        try {
+            Statement st=Connexion.getInstance().getConnection().createStatement();
+             ResultSet res=st.executeQuery(req);
+            while(res.next()){
+               v=new Vaccin(res.getInt("id"),
+                       res.getString("nom"),
+                       res.getString("Description"),
+                       res.getDate("date"));
+    
+        }
+        } catch (SQLException ex) {
+            Logger.getLogger(VilleService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+     
+     return v ;    
     }
 
     @Override
     public Vaccin set(Vaccin t) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+        String sql = "UPDATE vaccin SET nom=?,description=? ,date= ? WHERE id=?";
+   int rowsUpdated = 0;
+ 
+PreparedStatement statement = null;
+          try {
+              statement = conn.getConnection().prepareStatement(sql);
+ statement.setInt(4,t.getId());
+statement.setString(1,t.getNom());
+statement.setString(2,t.getDescription());
+
+statement.setDate(3, (java.sql.Date) t.getDate()); 
+ rowsUpdated = statement.executeUpdate();
+          } catch (SQLException ex) {
+              Logger.getLogger(VaccinService.class.getName()).log(Level.SEVERE, null, ex);
+          }
+        
+
+if (rowsUpdated > 0) {
+    System.out.println("An existing Vaccin was updated successfully!");
+}
+    return t;    }
 
     @Override
     public void delete(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+      String sql = "DELETE FROM vaccin WHERE id=?";
+ 
+PreparedStatement statement = null;
+        try {
+            statement = conn.getConnection().prepareStatement(sql);
+        } catch (SQLException ex) {
+            Logger.getLogger(VaccinService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+            statement.setInt(1,id);
+        } catch (SQLException ex) {
+            Logger.getLogger(VaccinService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+ 
+int rowsDeleted = 0;
+        try {
+            rowsDeleted = statement.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(VaccinService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+if (rowsDeleted > 0) {
+    System.out.println("Vaccin was deleted successfully!");
+}
+      
     }
 
    

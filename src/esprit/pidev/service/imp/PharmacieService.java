@@ -14,7 +14,10 @@ import esprit.pidev.service.interfaces.IPharmacieService;
 import esprit.pidev.models.Pharmacie;
 import esprit.pidev.util.Connexion;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -58,22 +61,118 @@ if (rowsInserted > 0) {
 
     @Override
     public List<Pharmacie> getAll() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+        AdresseService as = new AdresseService();
+          List<Pharmacie> listpharmacie = new ArrayList<>();
+       String sql = "SELECT * FROM pharmacie";
+ 
+Statement statement = null;
+        try {
+            statement = conn.getConnection().createStatement();
+        } catch (SQLException ex) {
+            Logger.getLogger(VaccinService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+ResultSet result = null;
+        try {
+            result = statement.executeQuery(sql);
+        } catch (SQLException ex) {
+            Logger.getLogger(PharmacieService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+ 
+int count = 0;
+ 
+        try {
+            while (result.next()){
+                int id = result.getInt("id");
+                String nom = result.getString("nom");
+                String type = result.getString("type");
+                int idA = result.getInt("adresse");
+            Pharmacie p = new Pharmacie(id,nom,type,as.getOne(idA));
+            listpharmacie.add(p);
+            } 
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(VaccinService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    
+    return listpharmacie;
+     }
 
     @Override
     public Pharmacie getOne(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+     Pharmacie phr =null ;
+        AdresseService as = new AdresseService();
+       
+    String req="select * from pharmacie where id="+id;  
+        
+        try {
+            Statement st=Connexion.getInstance().getConnection().createStatement();
+             ResultSet res=st.executeQuery(req);
+            while(res.next()){
+                phr =new Pharmacie(res.getInt("id"),
+                        res.getString("nom"),
+                        res.getString("type"),
+                        as.getOne(res.getInt("adresse")));
+    
+        }
+        } catch (SQLException ex) {
+            Logger.getLogger(VilleService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+     
+     return phr ;   
     }
 
     @Override
     public Pharmacie set(Pharmacie t) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       String sql = "UPDATE pharmacie SET nom=?,type=? ,adresse = ? WHERE id=?";
+   int rowsUpdated = 0;
+ 
+PreparedStatement statement = null;
+          try {
+              statement = conn.getConnection().prepareStatement(sql);
+ statement.setInt(4,t.getId());
+statement.setString(1,t.getNom());
+statement.setString(2,t.getType());
+
+statement.setInt(3,t.getAdresse().getId()); 
+ rowsUpdated = statement.executeUpdate();
+          } catch (SQLException ex) {
+              Logger.getLogger(PharmacieService.class.getName()).log(Level.SEVERE, null, ex);
+          }
+        
+
+if (rowsUpdated > 0) {
+    System.out.println("An existing pharmacie was updated successfully!");
+}
+    return t;
     }
 
     @Override
     public void delete(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    String sql = "DELETE FROM  pharmacie WHERE id=?";
+ 
+PreparedStatement statement = null;
+        try {
+            statement = conn.getConnection().prepareStatement(sql);
+        } catch (SQLException ex) {
+            Logger.getLogger(PharmacieService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+            statement.setInt(1,id);
+        } catch (SQLException ex) {
+            Logger.getLogger(PharmacieService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+ 
+int rowsDeleted = 0;
+        try {
+            rowsDeleted = statement.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(PharmacieService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+if (rowsDeleted > 0) {
+    System.out.println("Pharmacie was deleted successfully!");
+}
+        
+    }   
+    
     
 }

@@ -20,7 +20,12 @@ public class Pharmacie extends ObjetPersistant{
         this.adresse = adresse;
     }
 
-    
+    public Pharmacie(int id ,String nom, String type, Adresse adresse) {
+        super.setId(id);
+        this.nom = nom;
+        this.type = type;
+        this.adresse = adresse;
+    } 
 
 
     public String getNom() {
