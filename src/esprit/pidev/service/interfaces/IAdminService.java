@@ -3,14 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package esprit.pidev.service;
+package esprit.pidev.service.interfaces;
 
-import esprit.pidev.models.Pharmacie;
+import esprit.pidev.models.Admin;
 
 /**
  *
  * @author ousse
  */
-public interface IPharmacieService extends IObjetPersistantService<Pharmacie> {
+public interface IAdminService extends IObjetPersistantService<Admin> {
     
 }

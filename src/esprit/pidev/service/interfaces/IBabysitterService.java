@@ -3,14 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package esprit.pidev.service;
+package esprit.pidev.service.interfaces;
 
-import esprit.pidev.models.Produit;
+import esprit.pidev.models.Babysitter;
 
 /**
  *
  * @author ousse
  */
-public interface IProduitService extends IObjetPersistantService<Produit> {
+public interface IBabysitterService extends IObjetPersistantService<Babysitter> {
     
 }

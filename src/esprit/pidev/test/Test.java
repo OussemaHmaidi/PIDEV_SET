@@ -5,6 +5,8 @@
  */
 package esprit.pidev.test;
 
+import esprit.pidev.models.Ville;
+import esprit.pidev.service.imp.VilleService;
 import esprit.pidev.util.Connexion;
 
 /**
@@ -22,6 +24,11 @@ public class Test {
         
            Connexion d2=Connexion.getInstance();
       System.out.println(d2.hashCode());
+        Ville v=new Ville();
+        v.setNom("aaaa");
+        v.setCodePostal("1111");
+        VilleService vs=new VilleService();
+        System.out.println(vs.save(v));
     }
     
 }
