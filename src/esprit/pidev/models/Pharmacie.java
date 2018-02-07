@@ -14,6 +14,14 @@ public class Pharmacie extends ObjetPersistant{
     public Pharmacie() {
     }
 
+    public Pharmacie(String nom, String type, Adresse adresse) {
+        this.nom = nom;
+        this.type = type;
+        this.adresse = adresse;
+    }
+
+    
+
 
     public String getNom() {
         return nom;

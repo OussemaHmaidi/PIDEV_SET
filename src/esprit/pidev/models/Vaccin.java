@@ -17,6 +17,14 @@ public class Vaccin extends ObjetPersistant{
     public Vaccin() {
     }
 
+    public Vaccin(int id, String nom, String desc, java.sql.Date date) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public Vaccin(int id, String nom, String desc, Date date) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 
     public String getNom() {
         return nom;
