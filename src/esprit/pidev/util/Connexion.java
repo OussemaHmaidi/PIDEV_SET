@@ -14,7 +14,7 @@ import java.sql.SQLException;
  * @author ousse
  */
 public class Connexion {
- static String url="jdbc:mysql://127.0.0.1:3306/all4kids";
+ static String url="jdbc:mysql://127.0.0.1:8889/all4kids";
     static String login="root";
     static String passwd="root";
  static Connection cnx;
