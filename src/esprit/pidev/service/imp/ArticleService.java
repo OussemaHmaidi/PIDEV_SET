@@ -41,7 +41,7 @@ String req="insert into article (titre,categorie,contenu,admin) values ('"+t.get
     public List<Article> getAll() {
 String req="select * from article";
         List<Article> l=new ArrayList<>();
-      // AdminService ad= new AdminService();
+       AdminService ad= new AdminService();
         try {
             st=Connexion.getInstance().getConnection().createStatement();
         
@@ -52,7 +52,7 @@ String req="select * from article";
             g.setTitre(res.getString("titre"));
             g.setCategorie(res.getString("categorie"));
              g.setContenu(res.getString("contenu"));
-        //   g.setAdmin(ad.getOne(res.getInt("admin")));
+           g.setAdmin(ad.getOne(res.getInt("admin")));
           
             l.add(g);
         }
