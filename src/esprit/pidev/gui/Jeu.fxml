@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.40" fx:controller="esprit.pidev.gui.controllers.JeuController">
+   <children>
+      <GridPane layoutX="126.0" layoutY="93.0" prefHeight="181.0" prefWidth="348.0">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <children>
+            <Label text="Nom" />
+            <Label text="Url" GridPane.rowIndex="1" />
+            <Label text="Type" GridPane.rowIndex="2" />
+            <Label text="Description" GridPane.rowIndex="3" />
+            <TextField fx:id="txtnom" GridPane.columnIndex="1" />
+            <TextField fx:id="txturl" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="txtType" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <TextField fx:id="txtDescription" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <Button fx:id="btnAjouter" mnemonicParsing="false" onAction="#ajouter" text="Ajouter" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+         </children>
+      </GridPane>
+      <Label layoutX="158.0" layoutY="14.0" text="Ajouter Jeu">
+         <font>
+            <Font size="43.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

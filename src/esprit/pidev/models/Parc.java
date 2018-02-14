@@ -14,6 +14,13 @@ public class Parc extends ObjetPersistant{
     public Parc() {
     }
 
+    public Parc(String nom, String decription, Adresse adresse) {
+        this.nom = nom;
+        this.decription = decription;
+        this.adresse = adresse;
+    }
+
+  
 
     public String getNom() {
         return nom;
