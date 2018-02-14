@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="esprit.pidev.gui.controllers.AjouterBabysitterFXMLController">
+   <children>
+      <Pane prefHeight="509.0" prefWidth="600.0">
+         <children>
+            <Text layoutX="134.0" layoutY="74.0" strokeType="OUTSIDE" strokeWidth="0.0" style="" text="Ajouter Babysitter">
+               <font>
+                  <Font name="Arial" size="42.0" />
+               </font>
+            </Text>
+            <GridPane layoutX="163.0" layoutY="92.0" prefHeight="222.0" prefWidth="275.0">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nom:" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Prenom:" GridPane.rowIndex="1" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Date de naissance:" GridPane.rowIndex="2" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Login:" GridPane.rowIndex="4" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Mot de passe:" GridPane.rowIndex="5" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="C.I.N:" GridPane.rowIndex="3" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Telephone:" GridPane.rowIndex="6" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Salaire:" GridPane.rowIndex="7" />
+                  <TextField fx:id="nom" GridPane.columnIndex="1" />
+                  <TextField fx:id="prenom" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <TextField fx:id="cin" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <TextField fx:id="login" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                  <TextField fx:id="mp" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                  <TextField fx:id="tel" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                  <TextField fx:id="salaire" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                  <DatePicker fx:id="dn" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+               </children>
+            </GridPane>
+            <Button fx:id="btn" layoutX="234.0" layoutY="324.0" mnemonicParsing="false" onAction="#ajouter" text="Ajouter brass omek ♥" />
+            <ImageView fitHeight="161.0" fitWidth="245.0" layoutX="177.0" layoutY="358.0" pickOnBounds="true" preserveRatio="true">
+                   <image>
+                   <Image url="@../../../../images/babysitter.png" />
+                   </image>
+            </ImageView>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

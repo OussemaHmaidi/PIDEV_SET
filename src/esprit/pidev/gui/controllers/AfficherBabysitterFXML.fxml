@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="esprit.pidev.gui.controllers.AfficherBabysitterFXMLController">
+   <children>
+      <TableView fx:id="tableview" layoutX="39.0" layoutY="66.0" prefHeight="150.0" prefWidth="525.0">
+        <columns>
+          <TableColumn fx:id="nom" prefWidth="75.0" text="nom" />
+          <TableColumn fx:id="prenom" prefWidth="75.0" text="prenom" />
+            <TableColumn fx:id="dn" prefWidth="75.0" text="date de naissance" />
+            <TableColumn fx:id="cin" prefWidth="75.0" text="C.I.N" />
+            <TableColumn fx:id="tel" prefWidth="75.0" text="telephone" />
+            <TableColumn fx:id="salaire" prefWidth="75.0" text="salaire" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>

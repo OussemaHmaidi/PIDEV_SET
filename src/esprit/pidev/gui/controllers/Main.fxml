@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<StackPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1100.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="esprit.pidev.gui.controllers.MainController">
+   <children>
+      <ImageView fitHeight="650.0" fitWidth="1100.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../images/bg.png" />
+         </image>
+      </ImageView>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0">
+         <children>
+            <VBox fx:id="groupCompany" layoutX="159.0" layoutY="268.0" spacing="8.0">
+               <children>
+                  <AnchorPane fx:id="menuCompany" onMouseClicked="#ajouter" prefHeight="160.0" prefWidth="130.0" styleClass="menus" stylesheets="@style.css">
+                     <children>
+                        <ImageView fitHeight="80.0" fitWidth="80.0" layoutX="25.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../images/company.png" />
+                           </image>
+                        </ImageView>
+                        <VBox alignment="CENTER" layoutX="3.0" layoutY="101.0" prefHeight="50.0" prefWidth="122.0">
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Ajouter" textAlignment="CENTER" wrappingWidth="89.13671875">
+                                 <font>
+                                    <Font name="Roboto Medium" size="14.0" />
+                                 </font>
+                              </Text>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Babysitter" textAlignment="CENTER" wrappingWidth="89.13671875">
+                                 <font>
+                                    <Font name="Roboto Medium" size="14.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </VBox>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane fx:id="menuSynch" onMouseClicked="#afficher" prefHeight="160.0" prefWidth="130.0" style="-fx-background-color: rgb(0, 192, 239,0.8);" styleClass="menus" stylesheets="@style.css">
+                     <children>
+                        <ImageView fitHeight="80.0" fitWidth="80.0" layoutX="25.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../images/Cloud.png" />
+                           </image>
+                        </ImageView>
+                        <VBox alignment="CENTER" layoutX="3.0" layoutY="101.0" prefHeight="50.0" prefWidth="122.0">
+                           <children>
+                              <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Afficher" textAlignment="CENTER" wrappingWidth="89.13671875">
+                                 <font>
+                                    <Font name="Roboto Medium" size="14.0" />
+                                 </font>
+                              </Text>
+                              <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Babysitter" textAlignment="CENTER" wrappingWidth="89.13671875">
+                                 <font>
+                                    <Font name="Roboto Medium" size="14.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </VBox>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </VBox>
+         </children>
+      </AnchorPane>
+   </children>
+</StackPane>
