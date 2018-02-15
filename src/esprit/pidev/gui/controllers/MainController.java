@@ -5,9 +5,6 @@
  */
 package esprit.pidev.gui.controllers;
 
-import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXPopup;
-import com.jfoenix.controls.JFXRippler;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
