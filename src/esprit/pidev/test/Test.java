@@ -5,9 +5,12 @@
  */
 package esprit.pidev.test;
 
-import esprit.pidev.models.Ville;
-import esprit.pidev.service.imp.VilleService;
+import esprit.pidev.models.Babysitter;
+import esprit.pidev.models.Parent;
+import esprit.pidev.service.imp.BabysitterService;
+import esprit.pidev.service.imp.ParentService;
 import esprit.pidev.util.Connexion;
+import java.sql.Date;
 
 /**
  *
@@ -24,10 +27,11 @@ public class Test {
         
            Connexion d2=Connexion.getInstance();
       System.out.println(d2.hashCode());
-        Ville v=new Ville();
-        VilleService vs=new VilleService();
-        vs.delete(3);
-  
+        Parent v=new Parent();
+        ParentService vs=new ParentService();
+        v.setCin("asasasa");
+        v.setEmail("asasasa");
+        vs.save(v);
     }
     
 }

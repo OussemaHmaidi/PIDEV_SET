@@ -15,6 +15,14 @@ public class Produit extends ObjetPersistant{
     public Produit() {
     }
 
+    public Produit(String nom, String description, String categorie) {
+        this.nom = nom;
+        this.description = description;
+        this.categorie = categorie;
+    }
+
+    
+
     public String getNom() {
         return nom;
     }
