@@ -5,9 +5,7 @@
  */
 package esprit.pidev.service.imp;
 
-import esprit.pidev.models.Adresse;
 import esprit.pidev.models.Parc;
-import esprit.pidev.models.Ville;
 import esprit.pidev.util.Connexion;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -30,12 +28,12 @@ public class ParcService implements esprit.pidev.service.interfaces.IParcService
     
     @Override
     public Parc save(Parc t) {
-        String req="insert into parc (nom,decription,adresse) values ('"+t.getNom()+"', '"+t.getDecription()+"','"+t.getAdresse().getId()+"')";
+        String req="insert into parc (nom,decription,adresse) values ('"+t.getNom()+"', '"+t.getDecription()+"','"+t.getAdresse()+"')";
         try {
             st=Connexion.getInstance().getConnection().createStatement();
             st.executeUpdate(req);
         } catch (SQLException ex) {
-            Logger.getLogger(VilleService.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ParcService.class.getName()).log(Level.SEVERE, null, ex);
         }
         return t;
         
@@ -47,7 +45,6 @@ public class ParcService implements esprit.pidev.service.interfaces.IParcService
     public List<Parc> getAll() {
        String req="select * from parc";
         List<Parc> l=new ArrayList<>();
-        AdresseService ad=new AdresseService();
         
         try {
             st=Connexion.getInstance().getConnection().createStatement();
@@ -58,13 +55,13 @@ public class ParcService implements esprit.pidev.service.interfaces.IParcService
             p.setId(res.getInt("id"));
             p.setNom(res.getString("nom"));
             p.setDecription(res.getString("decription"));
-            p.setAdresse(ad.getOne(res.getInt("adresse")));
+            p.setAdresse(res.getString("adresse"));
             
             
             l.add(p);
         }
         } catch (SQLException ex) {
-            Logger.getLogger(VilleService.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ParcService.class.getName()).log(Level.SEVERE, null, ex);
         }
         return l;
     }
@@ -74,8 +71,6 @@ public class ParcService implements esprit.pidev.service.interfaces.IParcService
         
         String req="select * from parc where id="+id;  
          Parc p=new Parc();
-        AdresseService ad=new AdresseService();
-        
              Statement st;
         try {
             st = Connexion.getInstance().getConnection().createStatement();
@@ -85,7 +80,7 @@ public class ParcService implements esprit.pidev.service.interfaces.IParcService
               p.setId(res.getInt("id"));
               p.setNom(res.getString("nom"));
               p.setDecription(res.getString("decription"));
-              p.setAdresse(ad.getOne(res.getInt("adresse")));
+              p.setAdresse(res.getString("adresse"));
              }            
         } catch (SQLException ex) {
             Logger.getLogger(ParcService.class.getName()).log(Level.SEVERE, null, ex);
@@ -100,7 +95,7 @@ public class ParcService implements esprit.pidev.service.interfaces.IParcService
             PreparedStatement statement = Connexion.getInstance().getConnection().prepareStatement(sql);
             statement.setString(1, t.getNom());    
             statement.setString(2, t.getDecription());
-            statement.setInt(3, t.getAdresse().getId());
+            statement.setString(3, t.getAdresse());
             int rowsUpdated = statement.executeUpdate();
             if (rowsUpdated > 0) {
             System.out.println("An existing user was updated successfully!");

@@ -115,7 +115,7 @@ int count = 0;
     
         }
         } catch (SQLException ex) {
-            Logger.getLogger(VilleService.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(VaccinService.class.getName()).log(Level.SEVERE, null, ex);
         }
      
      return v ;    

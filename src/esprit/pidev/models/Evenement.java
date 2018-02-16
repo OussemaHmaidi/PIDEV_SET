@@ -12,8 +12,7 @@ public class Evenement extends ObjetPersistant{
     private Date date;
     private String description;
     private Float prix;
-    private Adresse adresse;
-    private BonPlan bonPlan;
+    private String adresse;
 
     public Evenement() {
     }
@@ -51,25 +50,17 @@ public class Evenement extends ObjetPersistant{
         this.prix = prix;
     }
 
-    public Adresse getAdresse() {
+    public String getAdresse() {
         return adresse;
     }
 
-    public void setAdresse(Adresse adresse) {
+    public void setAdresse(String adresse) {
         this.adresse = adresse;
-    }
-
-    public BonPlan getBonPlan() {
-        return bonPlan;
-    }
-
-    public void setBonPlan(BonPlan bonPlan) {
-        this.bonPlan = bonPlan;
     }
 
     @Override
     public String toString() {
-        return "Evenement{" + "nom=" + nom + ", date=" + date + ", description=" + description + ", prix=" + prix + ", adresse=" + adresse + ", bonPlan=" + bonPlan + '}';
+        return "Evenement{" + "nom=" + nom + ", date=" + date + ", description=" + description + ", prix=" + prix + ", adresse=" + adresse + '}';
     }
     
 }

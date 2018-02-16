@@ -13,7 +13,6 @@ public class Admin extends ObjetPersistant {
     private String mp;
     private String nom;
     private String prenom;
-    private Collection<Article> articleCollection;
 
     public Admin() {
         super();
@@ -52,17 +51,10 @@ public class Admin extends ObjetPersistant {
         this.prenom = prenom;
     }
 
-    public Collection<Article> getArticleCollection() {
-        return articleCollection;
-    }
-
-    public void setArticleCollection(Collection<Article> articleCollection) {
-        this.articleCollection = articleCollection;
-    }
 
     @Override
     public String toString() {
-        return super.toString()+"Admin{" + "login=" + login + ", mp=" + mp + ", nom=" + nom + ", prenom=" + prenom + ", articleCollection=" + articleCollection + '}';
+        return super.toString()+"Admin{" + "login=" + login + ", mp=" + mp + ", nom=" + nom + ", prenom=" + prenom + '}';
     }
 
     

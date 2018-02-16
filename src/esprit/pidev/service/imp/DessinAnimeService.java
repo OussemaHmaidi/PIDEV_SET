@@ -35,7 +35,7 @@ public class DessinAnimeService implements IDessinAnimeService{
             st=Connexion.getInstance().getConnection().createStatement();
             st.executeUpdate(req);
         } catch (SQLException ex) {
-            Logger.getLogger(VilleService.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DessinAnimeService.class.getName()).log(Level.SEVERE, null, ex);
         }
         return t;
 
@@ -62,7 +62,7 @@ public class DessinAnimeService implements IDessinAnimeService{
             l.add(p);
         }
         } catch (SQLException ex) {
-            Logger.getLogger(VilleService.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DessinAnimeService.class.getName()).log(Level.SEVERE, null, ex);
         }
         return l;
 
@@ -88,7 +88,7 @@ public class DessinAnimeService implements IDessinAnimeService{
             p.setDate(res.getDate("date"));
              }            
         } catch (SQLException ex) {
-            Logger.getLogger(ParcService.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DessinAnimeService.class.getName()).log(Level.SEVERE, null, ex);
         }
        return p;
 
@@ -110,7 +110,7 @@ public class DessinAnimeService implements IDessinAnimeService{
 }
             
         } catch (SQLException ex) {
-            Logger.getLogger(ParcService.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DessinAnimeService.class.getName()).log(Level.SEVERE, null, ex);
         }
         return t;
 
@@ -129,7 +129,7 @@ public class DessinAnimeService implements IDessinAnimeService{
               System.out.println("A user was deleted successfully!");
          }
         } catch (SQLException ex) {
-            Logger.getLogger(ParcService.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DessinAnimeService.class.getName()).log(Level.SEVERE, null, ex);
         }
         
 

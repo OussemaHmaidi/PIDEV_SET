@@ -9,7 +9,7 @@ public class Garderie extends ObjetPersistant{
 
     private String nom;
     private String description;
-    private Adresse adresse;
+    private String adresse;
 
     public Garderie() {
     }
@@ -31,11 +31,11 @@ public class Garderie extends ObjetPersistant{
         this.description = description;
     }
 
-    public Adresse getAdresse() {
+    public String getAdresse() {
         return adresse;
     }
 
-    public void setAdresse(Adresse adresse) {
+    public void setAdresse(String adresse) {
         this.adresse = adresse;
     }
 

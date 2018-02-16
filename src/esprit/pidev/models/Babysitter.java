@@ -17,7 +17,7 @@ public class Babysitter extends ObjetPersistant{
     private String cin;
     private String tel;
     private Float salaire;
-    private Collection<Plannification> plannificationCollection;
+    private String adresse;
 
     public Babysitter() {
     }
@@ -87,17 +87,17 @@ public class Babysitter extends ObjetPersistant{
         this.salaire = salaire;
     }
 
-    public Collection<Plannification> getPlannificationCollection() {
-        return plannificationCollection;
+    public String getAdresse() {
+        return adresse;
     }
 
-    public void setPlannificationCollection(Collection<Plannification> plannificationCollection) {
-        this.plannificationCollection = plannificationCollection;
+    public void setAdresse(String adresse) {
+        this.adresse = adresse;
     }
 
     @Override
     public String toString() {
-        return "Babysitter{" + "nom=" + nom + ", prenom=" + prenom + ", dateNaissance=" + dateNaissance + ", login=" + login + ", mp=" + mp + ", cin=" + cin + ", tel=" + tel + ", salaire=" + salaire + ", plannificationCollection=" + plannificationCollection + '}';
+        return "Babysitter{" + "nom=" + nom + ", prenom=" + prenom + ", dateNaissance=" + dateNaissance + ", login=" + login + ", mp=" + mp + ", cin=" + cin + ", tel=" + tel + ", salaire=" + salaire + ", adresse=" + adresse + '}';
     }
     
 }

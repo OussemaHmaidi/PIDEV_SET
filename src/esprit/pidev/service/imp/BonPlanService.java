@@ -27,7 +27,7 @@ public class BonPlanService implements IBonPlanService{
     ResultSet res;
     @Override
     public BonPlan save(BonPlan t) {
-        String req="insert into bon_plan (titre,description,categorie,date,remise) values ('"+t.getTitre()+"', '"+t.getDescription()+"', '"+t.getCategorie()+"', '"+t.getDate()+"', '"+t.getRemise()+"')";
+        String req="insert into bon_plan (type,description,proprietaire,adresse,date_debut,date_fin) values ('"+t.getType()+"', '"+t.getDescription()+"', '"+t.getProprietaire()+"', '"+t.getAdresse()+"', '"+t.getDate_debut()+"', '"+t.getDate_fin()+"')";
         try {
             st=Connexion.getInstance().getConnection().createStatement();
             st.executeUpdate(req);
@@ -50,11 +50,12 @@ public class BonPlanService implements IBonPlanService{
         while(res.next()){
             BonPlan p=new BonPlan();
             p.setId(res.getInt("id"));
-            p.setTitre(res.getString("titre"));
+            p.setType(res.getString("type"));
             p.setDescription(res.getString("description"));
-            p.setCategorie(res.getString("categorie"));
-            p.setDate(res.getDate("date"));
-            p.setRemise(res.getFloat("remise"));
+            p.setProprietaire(res.getString("proprietaire"));
+            p.setAdresse(res.getString("adresse"));
+            p.setDate_debut(res.getDate("date_debut"));
+            p.setDate_fin(res.getDate("date_fin"));
             l.add(p);
         }
         } catch (SQLException ex) {
@@ -73,11 +74,12 @@ public class BonPlanService implements IBonPlanService{
             res=st.executeQuery(req);
             while(res.next()){
             p.setId(res.getInt("id"));
-            p.setTitre(res.getString("titre"));
+            p.setType(res.getString("type"));
             p.setDescription(res.getString("description"));
-            p.setCategorie(res.getString("categorie"));
-            p.setDate(res.getDate("date"));
-            p.setRemise(res.getFloat("remise"));
+            p.setProprietaire(res.getString("proprietaire"));
+            p.setAdresse(res.getString("adresse"));
+            p.setDate_debut(res.getDate("date_debut"));
+            p.setDate_fin(res.getDate("date_fin"));
         }
         } catch (SQLException ex) {
             Logger.getLogger(BonPlanService.class.getName()).log(Level.SEVERE, null, ex);
@@ -87,7 +89,7 @@ public class BonPlanService implements IBonPlanService{
 
     @Override
     public BonPlan set(BonPlan t) {
-        String req="update bon_plan set 'titre="+t.getTitre()+"', 'description"+t.getDescription()+"', 'categorie="+t.getCategorie()+"', 'date="+t.getDate()+"', 'remise"+t.getRemise()+"' where id="+t.getId();  
+        String req="update bon_plan set 'type="+t.getType()+"', 'description"+t.getDescription()+"', 'propritaire="+t.getProprietaire()+"', 'adresse="+t.getAdresse()+"', 'date_debut"+t.getDate_debut()+"', 'date_fin"+t.getDate_fin()+"' where id="+t.getId();  
         BonPlan p=new BonPlan();
         try {
             st=Connexion.getInstance().getConnection().createStatement();

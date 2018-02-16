@@ -10,7 +10,6 @@ public class Article extends ObjetPersistant{
     private String titre;
     private String categorie;
     private String contenu;
-    private Admin admin;
 
     public Article() {
         super();
@@ -41,17 +40,10 @@ public class Article extends ObjetPersistant{
         this.contenu = contenu;
     }
 
-    public Admin getAdmin() {
-        return admin;
-    }
-
-    public void setAdmin(Admin admin) {
-        this.admin = admin;
-    }
 
     @Override
     public String toString() {
-        return "Article{" + "titre=" + titre + ", categorie=" + categorie + ", contenu=" + contenu + ", admin=" + admin + '}';
+        return "Article{" + "titre=" + titre + ", categorie=" + categorie + ", contenu=" + contenu + '}';
     }
     
 }

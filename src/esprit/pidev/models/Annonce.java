@@ -10,7 +10,6 @@ public class Annonce extends ObjetPersistant {
     private String nom;
     private String description;
     private Float prix;
-    private BonPlan bonPlan;
     private Produit produit;
 
     public Annonce() {
@@ -42,13 +41,6 @@ public class Annonce extends ObjetPersistant {
         this.prix = prix;
     }
 
-    public BonPlan getBonPlan() {
-        return bonPlan;
-    }
-
-    public void setBonPlan(BonPlan bonPlan) {
-        this.bonPlan = bonPlan;
-    }
 
     public Produit getProduit() {
         return produit;
@@ -60,7 +52,7 @@ public class Annonce extends ObjetPersistant {
 
     @Override
     public String toString() {
-        return "Annonce{" + "nom=" + nom + ", description=" + description + ", prix=" + prix + ", bonPlan=" + bonPlan + ", produit=" + produit + '}';
+        return "Annonce{" + "nom=" + nom + ", description=" + description + ", prix=" + prix + ", produit=" + produit + '}';
     }
     
 }

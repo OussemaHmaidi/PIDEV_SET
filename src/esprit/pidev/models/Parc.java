@@ -9,12 +9,12 @@ public class Parc extends ObjetPersistant{
 
     private String nom;
     private String decription;
-    private Adresse adresse;
+    private String adresse;
 
     public Parc() {
     }
 
-    public Parc(String nom, String decription, Adresse adresse) {
+    public Parc(String nom, String decription, String adresse) {
         this.nom = nom;
         this.decription = decription;
         this.adresse = adresse;
@@ -38,11 +38,11 @@ public class Parc extends ObjetPersistant{
         this.decription = decription;
     }
 
-    public Adresse getAdresse() {
+    public String getAdresse() {
         return adresse;
     }
 
-    public void setAdresse(Adresse adresse) {
+    public void setAdresse(String adresse) {
         this.adresse = adresse;
     }
 

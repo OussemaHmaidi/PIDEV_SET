@@ -31,12 +31,12 @@ public class EvenementService implements IEvenementService{
     ResultSet res;
     @Override
     public Evenement save(Evenement t) {
-         String req="insert into evenement (nom,date,description,prix,adresse,bon_plan) values ('"+t.getNom()+"', '"+t.getDate()+"','"+t.getDescription()+"','"+t.getPrix()+"','"+t.getAdresse().getId()+"','"+t.getBonPlan().getId()+"')";
+         String req="insert into evenement (nom,date,description,prix,adresse) values ('"+t.getNom()+"', '"+t.getDate()+"','"+t.getDescription()+"','"+t.getPrix()+"','"+t.getAdresse()+"')";
         try {
             st=Connexion.getInstance().getConnection().createStatement();
             st.executeUpdate(req);
         } catch (SQLException ex) {
-            Logger.getLogger(VilleService.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(EvenementService.class.getName()).log(Level.SEVERE, null, ex);
         }
         return t;
 
@@ -46,8 +46,6 @@ public class EvenementService implements IEvenementService{
     public List<Evenement> getAll() {
  String req="select * from evenement";
         List<Evenement> l=new ArrayList<>();
-        AdresseService ad=new AdresseService();
-        BonPlanService bp=new BonPlanService();
         try {
             st=Connexion.getInstance().getConnection().createStatement();
         
@@ -59,12 +57,11 @@ public class EvenementService implements IEvenementService{
             p.setDate(res.getDate("date"));
             p.setDescription(res.getString("description"));
             p.setPrix(res.getFloat("prix"));
-            p.setAdresse(ad.getOne(res.getInt("adresse")));
-            p.setBonPlan(bp.getOne(res.getInt("bon_plan")));  
+            p.setAdresse(res.getString("adresse"));
             l.add(p);
         }
         } catch (SQLException ex) {
-            Logger.getLogger(VilleService.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(EvenementService.class.getName()).log(Level.SEVERE, null, ex);
         }
         return l;
 
@@ -77,8 +74,6 @@ public class EvenementService implements IEvenementService{
 
  String req="select * from evenement where id="+id;  
          Evenement p=new Evenement();
-         AdresseService ad=new AdresseService();
-         BonPlanService bp=new BonPlanService();
         
              Statement st;
         try {
@@ -91,11 +86,10 @@ public class EvenementService implements IEvenementService{
             p.setDate(res.getDate("date"));
             p.setDescription(res.getString("description"));
             p.setPrix(res.getFloat("prix"));
-            p.setAdresse(ad.getOne(res.getInt("adresse")));
-            p.setBonPlan(bp.getOne(res.getInt("bon_plan")));
+            p.setAdresse(res.getString("adresse"));
              }            
         } catch (SQLException ex) {
-            Logger.getLogger(ParcService.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(EvenementService.class.getName()).log(Level.SEVERE, null, ex);
         }
        return p;
 
@@ -103,22 +97,21 @@ public class EvenementService implements IEvenementService{
 
     @Override
     public Evenement set(Evenement t) {
-String sql = "UPDATE evenement SET nom=?, date=?, description=?, prix=?, adresse=?, bon_plan=? where id="+t.getId();
+String sql = "UPDATE evenement SET nom=?, date=?, description=?, prix=?, adresse=? where id="+t.getId();
         try {
             PreparedStatement statement = Connexion.getInstance().getConnection().prepareStatement(sql);
             statement.setString(1, t.getNom());    
             statement.setDate(2, (Date) t.getDate());
             statement.setString(3, t.getDescription());
             statement.setFloat(4, t.getPrix());
-            statement.setInt(5, t.getAdresse().getId());
-            statement.setInt(6, t.getBonPlan().getId());
+            statement.setString(5, t.getAdresse());
             int rowsUpdated = statement.executeUpdate();
             if (rowsUpdated > 0) {
             System.out.println("An existing user was updated successfully!");
 }
             
         } catch (SQLException ex) {
-            Logger.getLogger(ParcService.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(EvenementService.class.getName()).log(Level.SEVERE, null, ex);
         }
         return t;
     }
@@ -135,7 +128,7 @@ String sql = "UPDATE evenement SET nom=?, date=?, description=?, prix=?, adresse
               System.out.println("A user was deleted successfully!");
          }
         } catch (SQLException ex) {
-            Logger.getLogger(ParcService.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(EvenementService.class.getName()).log(Level.SEVERE, null, ex);
         }
 
 

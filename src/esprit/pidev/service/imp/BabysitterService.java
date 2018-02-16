@@ -29,7 +29,7 @@ public class BabysitterService implements IBabysitterService{
 
     @Override
     public Babysitter save(Babysitter t) {
-        String req="insert into babysitter (nom,prenom,date_naissance,login,mp,cin,tel,salaire) values (?,?,?,?,?,?,?,?)";
+        String req="insert into babysitter (nom,prenom,date_naissance,login,mp,cin,tel,salaire,adresse) values (?,?,?,?,?,?,?,?,?)";
         try {
             pst=Connexion.getInstance().getConnection().prepareStatement(req);
             pst.setString(1, t.getNom());
@@ -40,6 +40,7 @@ public class BabysitterService implements IBabysitterService{
             pst.setString(6, t.getCin());
             pst.setString(7, t.getTel());
             pst.setFloat(8, t.getSalaire());
+            pst.setString(9, t.getAdresse());
             pst.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(BabysitterService.class.getName()).log(Level.SEVERE, null, ex);
@@ -63,6 +64,7 @@ public class BabysitterService implements IBabysitterService{
             p.setMp(res.getString("mp"));
             p.setCin(res.getString("cin"));
             p.setTel(res.getString("tel"));
+            p.setAdresse(res.getString("adresse"));
             p.setSalaire(res.getFloat("salaire"));
             p.setDateNaissance(res.getDate("date_naissance"));
             l.add(p);
@@ -88,6 +90,7 @@ public class BabysitterService implements IBabysitterService{
             p.setMp(res.getString("mp"));
             p.setCin(res.getString("cin"));
             p.setTel(res.getString("tel"));
+            p.setAdresse(res.getString("adresse"));
             p.setSalaire(res.getFloat("salaire"));
             p.setDateNaissance(res.getDate("date_naissance"));
         }
@@ -100,7 +103,7 @@ public class BabysitterService implements IBabysitterService{
 
     @Override
     public Babysitter set(Babysitter t) {
-        String req="update babysitter set nom=?, prenom=?, date_naissance=?, login=?, mp=?, cin=?, tel=?, salaire=? where id=?";  
+        String req="update babysitter set nom=?, prenom=?, date_naissance=?, login=?, mp=?, cin=?, tel=?, salaire=? , adresse=? where id=?";  
         Babysitter p=new Babysitter();
         try {
             pst=Connexion.getInstance().getConnection().prepareStatement(req);
@@ -112,7 +115,8 @@ public class BabysitterService implements IBabysitterService{
             pst.setString(6, t.getCin());
             pst.setString(7, t.getTel());
             pst.setFloat(8, t.getSalaire());
-            pst.setInt(9, t.getId());
+            pst.setString(9, t.getAdresse());
+            pst.setInt(10, t.getId());
             pst.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(BabysitterService.class.getName()).log(Level.SEVERE, null, ex);

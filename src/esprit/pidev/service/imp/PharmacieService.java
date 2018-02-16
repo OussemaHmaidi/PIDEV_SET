@@ -43,7 +43,7 @@ PreparedStatement statement = null;
              statement = conn.getConnection().prepareStatement(sql);
             statement.setString(1,t.getNom());
 statement.setString(2,t.getType());
-statement.setInt(3,t.getAdresse().getId());
+statement.setString(3,t.getAdresse());
          } catch (SQLException ex) {
              Logger.getLogger(PharmacieService.class.getName()).log(Level.SEVERE, null, ex);
          }
@@ -61,7 +61,6 @@ if (rowsInserted > 0) {
 
     @Override
     public List<Pharmacie> getAll() {
-        AdresseService as = new AdresseService();
           List<Pharmacie> listpharmacie = new ArrayList<>();
        String sql = "SELECT * FROM pharmacie";
  
@@ -85,8 +84,7 @@ int count = 0;
                 int id = result.getInt("id");
                 String nom = result.getString("nom");
                 String type = result.getString("type");
-                int idA = result.getInt("adresse");
-            Pharmacie p = new Pharmacie(id,nom,type,as.getOne(idA));
+            Pharmacie p = new Pharmacie(id,nom,type,result.getString("adresse"));
             listpharmacie.add(p);
             } 
             
@@ -100,7 +98,6 @@ int count = 0;
     @Override
     public Pharmacie getOne(int id) {
      Pharmacie phr =null ;
-        AdresseService as = new AdresseService();
        
     String req="select * from pharmacie where id="+id;  
         
@@ -111,11 +108,12 @@ int count = 0;
                 phr =new Pharmacie(res.getInt("id"),
                         res.getString("nom"),
                         res.getString("type"),
-                        as.getOne(res.getInt("adresse")));
+                        res.getString("adresse")
+                        );
     
         }
         } catch (SQLException ex) {
-            Logger.getLogger(VilleService.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(PharmacieService.class.getName()).log(Level.SEVERE, null, ex);
         }
      
      return phr ;   
@@ -133,7 +131,7 @@ PreparedStatement statement = null;
 statement.setString(1,t.getNom());
 statement.setString(2,t.getType());
 
-statement.setInt(3,t.getAdresse().getId()); 
+statement.setString(3,t.getAdresse()); 
  rowsUpdated = statement.executeUpdate();
           } catch (SQLException ex) {
               Logger.getLogger(PharmacieService.class.getName()).log(Level.SEVERE, null, ex);

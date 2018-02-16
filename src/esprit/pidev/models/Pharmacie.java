@@ -9,18 +9,18 @@ public class Pharmacie extends ObjetPersistant{
 
     private String nom;
     private String type;
-    private Adresse adresse;
+    private String adresse;
 
     public Pharmacie() {
     }
 
-    public Pharmacie(String nom, String type, Adresse adresse) {
+    public Pharmacie(String nom, String type, String adresse) {
         this.nom = nom;
         this.type = type;
         this.adresse = adresse;
     }
 
-    public Pharmacie(int id ,String nom, String type, Adresse adresse) {
+    public Pharmacie(int id ,String nom, String type, String adresse) {
         super.setId(id);
         this.nom = nom;
         this.type = type;
@@ -44,11 +44,11 @@ public class Pharmacie extends ObjetPersistant{
         this.type = type;
     }
 
-    public Adresse getAdresse() {
+    public String getAdresse() {
         return adresse;
     }
 
-    public void setAdresse(Adresse adresse) {
+    public void setAdresse(String adresse) {
         this.adresse = adresse;
     }
 

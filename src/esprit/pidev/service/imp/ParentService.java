@@ -30,7 +30,7 @@ public class ParentService implements IParentService{
 
     @Override
     public Parent save(Parent t) {
-        String req="insert into parent (nom,prenom,login,mp,email,date_naissance,cin,tel) values (?,?,?,?,?,?,?,?)";
+        String req="insert into parent (nom,prenom,login,mp,email,date_naissance,cin,tel,adresse) values (?,?,?,?,?,?,?,?,?)";
         try {
             pst=Connexion.getInstance().getConnection().prepareStatement(req);
             pst.setString(1, t.getNom());
@@ -41,6 +41,7 @@ public class ParentService implements IParentService{
             pst.setDate(6, (Date) t.getDateNaissance());
             pst.setString(7, t.getCin());
             pst.setString(8, t.getTel());
+            pst.setString(9, t.getAdresse());
             pst.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(ParentService.class.getName()).log(Level.SEVERE, null, ex);
@@ -67,6 +68,7 @@ public class ParentService implements IParentService{
             p.setTel(res.getString("tel"));
             p.setEmail(res.getString("email"));
             p.setDateNaissance(res.getDate("date_naissance"));
+            p.setAdresse(res.getString("adresse"));
             l.add(p);
         }
         } catch (SQLException ex) {
@@ -92,6 +94,7 @@ public class ParentService implements IParentService{
             p.setTel(res.getString("tel"));
             p.setEmail(res.getString("email"));
             p.setDateNaissance(res.getDate("date_naissance"));
+            p.setAdresse(res.getString("adresse"));
         }
         } catch (SQLException ex) {
             Logger.getLogger(ParentService.class.getName()).log(Level.SEVERE, null, ex);
@@ -101,7 +104,7 @@ public class ParentService implements IParentService{
 
     @Override
     public Parent set(Parent t) {
-        String req="update parent set nom=?, prenom=?, date_naissance=?, login=?, mp=?, cin=?, tel=?, email=? where id=?";  
+        String req="update parent set nom=?, prenom=?, date_naissance=?, login=?, mp=?, cin=?, tel=?, email=? , adresse=? where id=?";  
         try {
             pst=Connexion.getInstance().getConnection().prepareStatement(req);
             pst.setString(1, t.getNom());
@@ -112,7 +115,8 @@ public class ParentService implements IParentService{
             pst.setString(6, t.getCin());
             pst.setString(7, t.getTel());
             pst.setString(8, t.getEmail());
-            pst.setInt(9, t.getId());
+            pst.setString(9, t.getAdresse());
+            pst.setInt(10, t.getId());
             pst.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(ParentService.class.getName()).log(Level.SEVERE, null, ex);

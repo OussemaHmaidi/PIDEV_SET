@@ -17,6 +17,7 @@ public class Parent extends ObjetPersistant{
     private Date dateNaissance;
     private String cin;
     private String tel;
+    private String adresse;
     private Collection<Publication> publicationCollection;
     private Collection<Enfant> enfantCollection;
     private Collection<Plannification> plannificationCollection;
@@ -89,6 +90,14 @@ public class Parent extends ObjetPersistant{
         this.tel = tel;
     }
 
+    public String getAdresse() {
+        return adresse;
+    }
+
+    public void setAdresse(String adr) {
+        this.adresse = adr;
+    }
+
     public Collection<Publication> getPublicationCollection() {
         return publicationCollection;
     }
@@ -115,7 +124,7 @@ public class Parent extends ObjetPersistant{
 
     @Override
     public String toString() {
-        return "Parent{" + "nom=" + nom + ", prenom=" + prenom + ", login=" + login + ", mp=" + mp + ", email=" + email + ", dateNaissance=" + dateNaissance + ", cin=" + cin + ", tel=" + tel + ", publicationCollection=" + publicationCollection + ", enfantCollection=" + enfantCollection + ", plannificationCollection=" + plannificationCollection + '}';
+        return "Parent{" + "nom=" + nom + ", prenom=" + prenom + ", login=" + login + ", mp=" + mp + ", email=" + email + ", dateNaissance=" + dateNaissance + ", cin=" + cin + ", tel=" + tel + ", adresse=" + adresse + ", publicationCollection=" + publicationCollection + ", enfantCollection=" + enfantCollection + ", plannificationCollection=" + plannificationCollection + '}';
     }
     
 }

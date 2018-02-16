@@ -34,7 +34,7 @@ Statement st;
             st=Connexion.getInstance().getConnection().createStatement();
             st.executeUpdate(req);
         } catch (SQLException ex) {
-            Logger.getLogger(VilleService.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(JeuxService.class.getName()).log(Level.SEVERE, null, ex);
         }
         return t;
 
@@ -62,7 +62,7 @@ Statement st;
             l.add(p);
         }
         } catch (SQLException ex) {
-            Logger.getLogger(VilleService.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(JeuxService.class.getName()).log(Level.SEVERE, null, ex);
         }
         return l;
 
@@ -92,7 +92,7 @@ Statement st;
             p.setDescription(res.getString("description"));
              }            
         } catch (SQLException ex) {
-            Logger.getLogger(ParcService.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(JeuxService.class.getName()).log(Level.SEVERE, null, ex);
         }
        return p;
 
@@ -114,7 +114,7 @@ Statement st;
 }
             
         } catch (SQLException ex) {
-            Logger.getLogger(ParcService.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(JeuxService.class.getName()).log(Level.SEVERE, null, ex);
         }
         return t;
 
@@ -133,7 +133,7 @@ Statement st;
               System.out.println("A user was deleted successfully!");
          }
         } catch (SQLException ex) {
-            Logger.getLogger(ParcService.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(JeuxService.class.getName()).log(Level.SEVERE, null, ex);
         }
         
 

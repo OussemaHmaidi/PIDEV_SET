@@ -28,7 +28,7 @@ public class ArticleService implements IArticleService{
     ResultSet res;
     @Override
    public Article save(Article t){
-String req="insert into article (titre,categorie,contenu,admin) values ('"+t.getTitre()+"', '"+t.getCategorie()+"', '"+t.getContenu()+"', '"+t.getAdmin().getId()+"')";
+String req="insert into article (titre,categorie,contenu) values ('"+t.getTitre()+"', '"+t.getCategorie()+"', '"+t.getContenu()+"')";
         try {
             st=Connexion.getInstance().getConnection().createStatement();
             st.executeUpdate(req);
@@ -41,7 +41,6 @@ String req="insert into article (titre,categorie,contenu,admin) values ('"+t.get
     public List<Article> getAll() {
 String req="select * from article";
         List<Article> l=new ArrayList<>();
-       AdminService ad= new AdminService();
         try {
             st=Connexion.getInstance().getConnection().createStatement();
         
@@ -52,8 +51,6 @@ String req="select * from article";
             g.setTitre(res.getString("titre"));
             g.setCategorie(res.getString("categorie"));
              g.setContenu(res.getString("contenu"));
-           g.setAdmin(ad.getOne(res.getInt("admin")));
-          
             l.add(g);
         }
         } catch (SQLException ex) {
@@ -73,8 +70,6 @@ String req="select * from article";
             p.setTitre(res.getString("titre"));
             p.setCategorie(res.getString("categorie"));
                p.setContenu(res.getString("contenu"));
-          // p.setAdmin(ad.getOne(res.getInt("admin")));
-          
               
         }
         } catch (SQLException ex) {
@@ -84,7 +79,7 @@ String req="select * from article";
 
     @Override
     public Article set(Article t) {
-String req="update article set titre='"+t.getTitre()+"', categorie='"+t.getCategorie()+"', contenu='"+t.getContenu()+"', admin='"+t.getAdmin().getId()+"' where id="+t.getId();  
+String req="update article set titre='"+t.getTitre()+"', categorie='"+t.getCategorie()+"', contenu='"+t.getContenu()+"' where id="+t.getId();  
         Article p=new Article();
         try {
             st=Connexion.getInstance().getConnection().createStatement();

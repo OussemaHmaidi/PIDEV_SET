@@ -6,7 +6,6 @@
 package esprit.pidev.service.imp;
 
 import esprit.pidev.models.Garderie;
-import esprit.pidev.models.Ville;
 import esprit.pidev.service.interfaces.IGarderieService;
 import esprit.pidev.util.Connexion;
 import java.sql.PreparedStatement;
@@ -28,7 +27,7 @@ public class GarderieService implements IGarderieService{
     ResultSet res;
     @Override
     public Garderie save(Garderie t) {
-String req="insert into garderie (nom,description,adresse) values ('"+t.getNom()+"', '"+t.getDescription()+"', '"+t.getAdresse().getId()+"')";
+String req="insert into garderie (nom,description,adresse) values ('"+t.getNom()+"', '"+t.getDescription()+"', '"+t.getAdresse()+"')";
         try {
             st=Connexion.getInstance().getConnection().createStatement();
             st.executeUpdate(req);
@@ -41,7 +40,6 @@ String req="insert into garderie (nom,description,adresse) values ('"+t.getNom()
     public List<Garderie> getAll() {
  String req="select * from Garderie";
         List<Garderie> l=new ArrayList<>();
-       AdresseService ad= new AdresseService();
         try {
             st=Connexion.getInstance().getConnection().createStatement();
         
@@ -51,7 +49,7 @@ String req="insert into garderie (nom,description,adresse) values ('"+t.getNom()
             g.setId(res.getInt("id"));
             g.setNom(res.getString("nom"));
             g.setDescription(res.getString("description"));
-           g.setAdresse(ad.getOne(res.getInt("adresse")));
+           g.setAdresse(res.getString("adresse"));
           
             l.add(g);
         }
@@ -71,16 +69,17 @@ String req="insert into garderie (nom,description,adresse) values ('"+t.getNom()
             p.setId(res.getInt("id"));
             p.setNom(res.getString("nom"));
             p.setDescription(res.getString("description"));
+            p.setAdresse(res.getString("adresse"));
         }
         } catch (SQLException ex) {
-            Logger.getLogger(VilleService.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(GarderieService.class.getName()).log(Level.SEVERE, null, ex);
         }
         return p;
     }
 
     @Override
     public Garderie set(Garderie t) {
-String req="update garderie set nom='"+t.getNom()+"', description='"+t.getDescription()+"', adresse='"+t.getAdresse().getId()+"' where id="+t.getId();  
+String req="update garderie set nom='"+t.getNom()+"', description='"+t.getDescription()+"', adresse='"+t.getAdresse()+"' where id="+t.getId();  
         Garderie p=new Garderie();
         try {
             st=Connexion.getInstance().getConnection().createStatement();
@@ -98,7 +97,7 @@ String req="update garderie set nom='"+t.getNom()+"', description='"+t.getDescri
         pst.setInt(1,id);
         pst.executeUpdate();
         } catch (SQLException ex) {
-            Logger.getLogger(VilleService.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(GarderieService.class.getName()).log(Level.SEVERE, null, ex);
     }
     
 

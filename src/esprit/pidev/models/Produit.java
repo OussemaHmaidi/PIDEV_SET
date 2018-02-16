@@ -11,7 +11,6 @@ public class Produit extends ObjetPersistant{
     private String nom;
     private String description;
     private String categorie;
-    private Collection<Annonce> annonceCollection;
 
     public Produit() {
     }
@@ -40,17 +39,9 @@ public class Produit extends ObjetPersistant{
         this.categorie = categorie;
     }
 
-    public Collection<Annonce> getAnnonceCollection() {
-        return annonceCollection;
-    }
-
-    public void setAnnonceCollection(Collection<Annonce> annonceCollection) {
-        this.annonceCollection = annonceCollection;
-    }
-
     @Override
     public String toString() {
-        return "Produit{" + "nom=" + nom + ", description=" + description + ", categorie=" + categorie + ", annonceCollection=" + annonceCollection + '}';
+        return "Produit{" + "nom=" + nom + ", description=" + description + ", categorie=" + categorie + '}';
     }
     
 }
