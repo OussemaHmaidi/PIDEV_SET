@@ -12,5 +12,6 @@ import esprit.pidev.models.Parent;
  * @author ousse
  */
 public interface IParentService extends IObjetPersistantService<Parent> {
+    public Parent getLoginAccount(String login,String passwort); 
     
 }
