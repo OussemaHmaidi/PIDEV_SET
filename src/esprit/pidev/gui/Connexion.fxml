@@ -18,18 +18,8 @@
             <Image url="@/images/happy-family-together-parents-their-little.png" />
          </image>
       </ImageView>
-      <TextField fx:id="compte" layoutX="444.0" layoutY="206.0" />
-      <Button fx:id="connexion" layoutX="468.0" layoutY="296.0" mnemonicParsing="false" onAction="#login" style="-fx-background-color: #DEB887#DEB887;" text="Connexion" />
-      <Label layoutX="357.0" layoutY="208.0" text="Compte">
-         <font>
-            <Font name="Arial Black" size="14.0" />
-         </font>
-      </Label>
-      <Label layoutX="328.0" layoutY="251.0" text="Mot de passe">
-         <font>
-            <Font name="Arial Black" size="14.0" />
-         </font>
-      </Label>
+      <TextField fx:id="compte" layoutX="344.0" layoutY="202.0" prefHeight="42.0" prefWidth="142.0" promptText="Nom" />
+      <Button fx:id="connexion" layoutX="344.0" layoutY="292.0" mnemonicParsing="false" onAction="#login" style="-fx-background-color: #DEB887#DEB887;" text="Connexion" />
       <Label disable="true" layoutX="344.0" layoutY="95.0" text="ALL 4 KIDS">
          <font>
             <Font name="Bangla MN" size="38.0" />
@@ -43,12 +33,12 @@
             </LinearGradient>
          </textFill>
       </Label>
-      <Button fx:id="nouveauparents" layoutX="377.0" layoutY="428.0" mnemonicParsing="false" style="-fx-background-color: #DEB887#DEB887;" text="Nouveau Parent" />
-      <Label layoutX="369.0" layoutY="403.0" text="Vous n'avez pas un compte ?">
+      <Button fx:id="nouveauparents" layoutX="352.0" layoutY="427.0" mnemonicParsing="false" onAction="#signin" style="-fx-background-color: #DEB887#DEB887;" text="Nouveau Parent" />
+      <Label layoutX="344.0" layoutY="402.0" text="Vous n'avez pas un compte ?">
          <font>
             <Font name="Apple Braille" size="14.0" />
          </font>
       </Label>
-      <PasswordField fx:id="motdepasse" layoutX="444.0" layoutY="249.0" />
+      <PasswordField fx:id="motdepasse" layoutX="344.0" layoutY="244.0" promptText="Mot de passe" />
    </children>
 </AnchorPane>

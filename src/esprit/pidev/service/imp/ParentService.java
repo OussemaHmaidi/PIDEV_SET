@@ -136,26 +136,23 @@ public class ParentService implements IParentService{
         }
 
     }
-
+ 
+    
     @Override
     public Parent getLoginAccount(String login, String password) {
-        String req="select * from parent where login="+login+", mp="+password;  
-        Parent p=new Parent();
+        String req="select * from parent where login='"+login+"' and mp='"+password+"'";  
+        Parent p= null;
         try {
             st=Connexion.getInstance().getConnection().createStatement();
             res=st.executeQuery(req);
-            while(res.next()){
-            p.setId(res.getInt("id"));
-            p.setNom(res.getString("nom"));
-            p.setPrenom(res.getString("prenom"));
-            p.setLogin(res.getString("login"));
-            p.setMp(res.getString("mp"));
-            p.setCin(res.getString("cin"));
-            p.setTel(res.getString("tel"));
-            p.setEmail(res.getString("email"));
-            p.setDateNaissance(res.getDate("date_naissance"));
-            p.setAdresse(res.getString("adresse"));
-        }
+ 
+            if(res.next())
+                {p = this.getOne(res.getInt("id"));}
+            else 
+                {System.out.println("Introuvable Parentservice.java");}
+            
+            
+            
         } catch (SQLException ex) {
             Logger.getLogger(ParentService.class.getName()).log(Level.SEVERE, null, ex);
         }

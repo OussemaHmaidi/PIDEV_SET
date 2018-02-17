@@ -28,6 +28,7 @@ import javafx.scene.Node;
 
 import javafx.scene.Scene;
 import javafx.scene.control.ButtonType;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 
@@ -60,6 +61,8 @@ public class InscriptionParentController implements Initializable {
     private DatePicker date;
     @FXML
     private Button ajouter;
+    @FXML
+    private Button cancel;
 
     /**
      * Initializes the controller class.
@@ -151,6 +154,17 @@ public class InscriptionParentController implements Initializable {
         
             }
         }
+
+    @FXML
+    private void cancel(ActionEvent event) throws IOException {
+        
+        ((Node) (event.getSource())).getScene().getWindow().hide();
+            
+            Stage stage = new Stage();            
+            stage.setTitle("All4Kids");
+            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("Connexion.fxml"))));
+            stage.show();
+    }
        
         
         
