@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="575.0" prefWidth="735.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="esprit.pidev.gui.AdminController">
+   <children>
+      <ImageView fitHeight="642.0" fitWidth="1097.0" layoutY="-27.0">
+         <image>
+            <Image url="@../../../images/ADMIN%20PANEL-%20LOGIN.png" />
+         </image>
+      </ImageView>
+      <JFXTextField fx:id="txtlogin" alignment="CENTER" layoutX="467.0" layoutY="247.0" prefHeight="25.0" prefWidth="178.0" promptText="Login" />
+      <JFXButton fx:id="btn" layoutX="493.0" layoutY="371.0" onAction="#connect" prefHeight="25.0" prefWidth="126.0" text="CONNECT" textAlignment="CENTER" textFill="#1eda10" />
+      <JFXPasswordField fx:id="pswd" alignment="CENTER" layoutX="467.0" layoutY="308.0" prefHeight="25.0" prefWidth="178.0" promptText="Password" />
+   </children>
+</AnchorPane>
