@@ -1,11 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="esprit.pidev.gui.IndexParentController">
-    
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/9" fx:controller="esprit.pidev.gui.IndexParentController">
+   <children>
+      <AnchorPane fx:id="topbar" prefHeight="74.0" prefWidth="604.0" style="-fx-background-color: #CF1C5A;">
+         <children>
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="192.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../images/all4kidsesm.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="setting" fitHeight="25.0" fitWidth="27.0" layoutX="557.0" layoutY="14.0" onMouseClicked="#setting" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../images/535106-user_512x512.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <ScrollPane layoutY="97.0" prefHeight="313.0" prefWidth="604.0" />
+      <Pane fx:id="settingpane" layoutX="3.0" layoutY="56.0" prefHeight="70.0" prefWidth="184.0" style="-fx-background-image: url(&quot;../../../../../Volumes/NO NAME/config.png../../../../../Volumes/NO NAME/config.png&quot;);" translateX="414.0" translateY="21.0" visible="false">
+         <children>
+            <ImageView fitHeight="91.0" fitWidth="106.0" layoutX="62.0" layoutY="-31.0">
+               <image>
+                  <Image url="@../../../images/config.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="76.0" layoutY="-14.0" pickOnBounds="true" preserveRatio="true" translateY="41.0">
+               <image>
+                  <Image url="@../../../images/logoutt.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="17.0" fitWidth="25.0" layoutX="80.0" layoutY="-2.0" opacity="0.66" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../images/settings.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="settinglabel" layoutX="110.0" layoutY="-2.0" text="Update" />
+            <Label fx:id="logoutlabel" layoutX="112.0" layoutY="33.0" onMouseClicked="#logout" text="Logout" />
+         </children>
+         <padding>
+            <Insets left="150.0" />
+         </padding>
+      </Pane>
+   </children>
 </AnchorPane>
