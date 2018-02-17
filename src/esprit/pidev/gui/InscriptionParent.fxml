@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.octicons.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.40" fx:controller="esprit.pidev.gui.InscriptionParentController">
+   <children>
+      <ImageView fx:id="cancel" fitHeight="437.0" fitWidth="624.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../images/happy-family-together-parents-their-little.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="364.0" layoutY="14.0" prefHeight="53.0" prefWidth="165.0" text="ALL 4 KIDS" textFill="#e4a88a" textOverrun="CENTER_ELLIPSIS">
+         <font>
+            <Font name="Cambria Math" size="27.0" />
+         </font>
+      </Label>
+      <Label layoutX="311.0" layoutY="75.0" text="Nom" />
+      <Label layoutX="447.0" layoutY="76.0" text="Prenom" />
+      <Label layoutX="310.0" layoutY="110.0" text="Email" />
+      <Label layoutX="307.0" layoutY="146.0" text="Date naissance" />
+      <Label layoutX="316.0" layoutY="180.0" text="Cin" />
+      <Label layoutX="310.0" layoutY="211.0" text="Téléphone" />
+      <Label layoutX="309.0" layoutY="246.0" text="Adresse" />
+      <Label layoutX="315.0" layoutY="278.0" text="Login" />
+      <Label layoutX="309.0" layoutY="319.0" text="Mot de passe" />
+      <Label layoutX="299.0" layoutY="353.0" text="Confiermer mot de passe" />
+      <TextField fx:id="nom" layoutX="351.0" layoutY="72.0" prefHeight="25.0" prefWidth="88.0" />
+      <TextField fx:id="prenom" layoutX="496.0" layoutY="72.0" prefHeight="25.0" prefWidth="97.0" />
+      <TextField fx:id="email" layoutX="351.0" layoutY="107.0" prefHeight="25.0" prefWidth="242.0" />
+      <TextField fx:id="cin" layoutX="394.0" layoutY="177.0" prefHeight="25.0" prefWidth="200.0" />
+      <TextField fx:id="tel" layoutX="394.0" layoutY="211.0" prefHeight="25.0" prefWidth="200.0" />
+      <TextField fx:id="adresse" layoutX="394.0" layoutY="243.0" prefHeight="25.0" prefWidth="200.0" />
+      <TextField fx:id="login" layoutX="395.0" layoutY="277.0" prefHeight="25.0" prefWidth="200.0" />
+      <PasswordField fx:id="mdp" layoutX="396.0" layoutY="315.0" prefHeight="25.0" prefWidth="200.0" />
+      <PasswordField fx:id="confirmermdp" layoutX="447.0" layoutY="349.0" />
+      <DatePicker fx:id="date" layoutX="389.0" layoutY="143.0" prefHeight="25.0" prefWidth="206.0" />
+      <Button fx:id="ajouter" layoutX="394.0" layoutY="378.0" mnemonicParsing="false" onAction="#ajouter" style="-fx-background-color: #DEB887;" text="Confirmer" />
+      <Button layoutX="477.0" layoutY="378.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="69.0" text="Cancel" />
+   </children>
+</AnchorPane>
